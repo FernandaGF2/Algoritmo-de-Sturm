@@ -25,11 +25,12 @@ def Sturm(P0):
     P2_aux = []
     for i in range (x):
         P2_aux.append(0)
-    while j > 0:
+       while j > 0:
         if(P1[j]!= 0):
             P2.append(P0[j]/P1[j])
             break
         j -= j
         P2 = []
+         
 """
 
