@@ -7,10 +7,9 @@ def derivar (poli):
 
     for x in range (len(poli) - 1, 0, -1):
         polinomio2.append(poli[x] * x)
-    
+        
     polinomio2 = list (reversed(polinomio2))
     return polinomio2
-
 
 
 def dividir (poli1, poli2):   #POLI1 == DIVIDENDO | POLI2 == DIVISOR
@@ -38,7 +37,6 @@ def dividir (poli1, poli2):   #POLI1 == DIVIDENDO | POLI2 == DIVISOR
 
     return poli1
 
-
 def sturm (a):
     
     print (a)
@@ -54,7 +52,6 @@ def sturm (a):
             b = c
         else:
             break
-
 
 polinomio = [-7, 4, 1]
 
