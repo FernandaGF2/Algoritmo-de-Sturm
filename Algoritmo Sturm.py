@@ -2,35 +2,60 @@
 """
 Created on Wed Sep  1 11:54:05 2021
 
-@author: Fernanda Guzman
-import math as mt
-import numpy as np 
+def derivar (poli):
+    polinomio2 = []
 
-mi_funcion = lambda x: x**6 - (4*x)**3 + x - 2
+    for x in range (len(poli) - 1, 0, -1):
+        polinomio2.append(poli[x] * x)
+    
+    polinomio2 = list (reversed(polinomio2))
+    return polinomio2
 
-P0 = [-2.0, 1.0, 0.0, -4.0, 0.0, 0.0, 1.0]
 
-#La siguiente función deriva 
-def derivar(A):
-    Ap = []
-    for i in range (len(A)):
-        Ap.append(i*A[i])
-    return Ap
 
-#La siguiente función es el Teorema de Sturm
-def Sturm(P0):
-    x = len(P0)
-    j = x-1
-    P1 = derivar(P0)
-    P2_aux = []
-    for i in range (x):
-        P2_aux.append(0)
-       while j > 0:
-        if(P1[j]!= 0):
-            P2.append(P0[j]/P1[j])
+def dividir (poli1, poli2):   #POLI1 == DIVIDENDO | POLI2 == DIVISOR
+    while True :
+
+        c = 0
+        a = poli1[len(poli1) - 1] / poli2 [len(poli2) - 1]
+
+        for x in range (len(poli2) - 1, -1, -1):
+            b = a * poli2 [x]
+            r = poli1[(len(poli1) - 1) - c] - b
+            poli1[(len(poli1) - 1) - c] = r
+            c = c + 1
+        
+        x = len(poli1) - 1
+
+        while poli1 [x] == 0:
+            poli1.pop(x)
+            x = x - 1
+        
+        if len(poli1) < len (poli2):
             break
-        j -= j
-        P2 = []
-         
-"""
 
+    poli1 = [num * -1 for num in poli1]
+
+    return poli1
+
+
+def sturm (a):
+    
+    print (a)
+    b = derivar(a)
+    print (b)
+
+    while True:
+        c = dividir(a, b)
+        print (c)
+
+        if len (c) != 1:
+            a = b 
+            b = c
+        else:
+            break
+
+
+polinomio = [-7, 4, 1]
+
+sturm(polinomio)
