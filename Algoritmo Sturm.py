@@ -13,8 +13,6 @@ def derivar (poli):
     polinomio2 = list (reversed(polinomio2))
     return polinomio2
 
-
-
 def dividir (poli1, poli2):   #POLI1 == DIVIDENDO | POLI2 == DIVISOR
     while True :
 
@@ -40,7 +38,6 @@ def dividir (poli1, poli2):   #POLI1 == DIVIDENDO | POLI2 == DIVISOR
 
     return poli1
 
-
 def sturm (a):
     
     print (a)
@@ -57,7 +54,24 @@ def sturm (a):
         else:
             break
 
-
 polinomio = [-2, 1, 0, -4, 0, 0, 1]
 
 sturm(polinomio)
+
+def Horner_method(poli2, z):
+    n = len(poli2) - 1
+    u = poli2[0]
+    v = u
+    for i in range(1,n):
+        u = poli2[i] + z*u
+        v = u + z*v
+    u = poli2[n] + z*u
+    
+    return u, v
+        
+sol = Horner_method([-2, 1, 0, -4, 0, 0, 1], -2)
+print("\nLa solución para el polinomio evaluado en -2 es: ")
+print (sol)
+sol2 = Horner_method([-2, 1, 0, -4, 0, 0, 1], 2)
+print("La solución para el polinomio evaluado en 2 es: ")
+print(sol2)
